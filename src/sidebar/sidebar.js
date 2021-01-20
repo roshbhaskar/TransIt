@@ -59,6 +59,8 @@ class SidebarComponent extends React.Component {
             }
             <Button onClick={()=> this.setState({inbox:true})}>All Notes</Button>
             <Button onClick={()=> this.setState({inbox:false})}>Bin</Button>
+            <Button onClick={this.props.handleLogout}>Sign Out</Button>
+            
             <List>
               { this.state.inbox ?
                 realnotes.map((_note, _index) => {

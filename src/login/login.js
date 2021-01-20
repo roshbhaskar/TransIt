@@ -1,9 +1,9 @@
 import React from "react"
 import {Link} from "react-router-dom"
+import './login.css'
 
 
-
-export default class loginPage extends React.Component {
+export default class LoginPage extends React.Component {
     render() {
         const {email,setEmail,password,setPassword,handleLogin,handleSignup,hasAccount,setHasAccount,emailError,passwordError} = this.props;
     

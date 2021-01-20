@@ -1,19 +1,231 @@
 import React,{useState,useEffect} from 'react';
 import NotePage from './home/NotePage';
+import LoginPage from "./login/login.js"
 import SidebarComponent from './sidebar/sidebar';
 import EditorComponent from './editor/editor';
 
 import './App.css';
 const firebase = require('firebase');
+function App() {
+  const [user,setUser] = useState('');
+  const [email,setEmail] = useState('');
+  const [password,setPassword] = useState('');
+  const [emailError,setEmailError] = useState('');
+  const [passwordError,setPasswordError] = useState('');
+  const [hasAccount,setHasAccount] = useState(false);
 
+
+  const clearInputs = () => {
+    setEmail('');
+    setPassword("");
+  }
+
+  const clearErrors =()=>{
+    setEmailError("");
+    setPasswordError("");
+  }
+
+
+
+  const handleLogin=()=>{
+    clearErrors();
+    firebase.auth().signInWithEmailAndPassword(email,password)
+    .catch(err => {
+      switch(err.code){
+        case "auth/invalid-email":
+        case "auth/user-disable" :
+          case "auth/user-not-found":
+            setEmailError(err.message);
+            break;
+          case "auth/wrong-password":
+            setPasswordError(err.message);
+            break;
+      }
+    })
+  }
+
+  const handleSignup = () =>{
+    clearErrors();
+    firebase.auth().createUserWithEmailAndPassword(email,password)
+    .catch(err => {
+      switch(err.code){
+        case "auth/email-already-in-use":
+        case "auth/invalid-email" :
+         
+            setEmailError(err.message);
+            break;
+          case "auth/weak-password":
+            setPasswordError(err.message);
+            break;
+      }
+    })
+  }
+
+  const handleLogout = () =>{
+    firebase.auth().signOut().then(function() {
+      console.log('Signed Out');
+    }, function(error) {
+      console.error('Sign Out Error', error);
+    });
+  }
+
+  const authListener = () =>{
+    firebase.auth().onAuthStateChanged(user => {
+      if(user){
+        clearInputs();
+        setUser(user);
+      }
+      else{
+        setUser("");
+      }
+    })
+  }
+
+  useEffect(()=>{
+    authListener();
+  },[])
+  return(
+  <div className="app-container">
+   
+   {user ?
+    <NotePage handleLogout={handleLogout} user={user}/>
+    :
+    <LoginPage email={email} setEmail={setEmail} password={password}
+    setPassword={setPassword}
+    handleLogin={handleLogin}
+    handleSignup={handleSignup}
+    hasAccount={hasAccount}
+    setHasAccount={setHasAccount}
+    emailError={emailError}
+    passwordError={passwordError}/>
+  }
+  
+  </div>
+  );
+}
+export default App;
+
+
+
+
+/*
 class App extends React.Component {
+
+  
+    constructor(props) {
+      super(props)
+    
+      this.state = {
+        user: '',
+        email:'',
+        password : '',
+        emailError: '',
+        passwordError :'',
+        hasAccount: false,
+        EmailError:'',
+        PasswordError:''
+      }
+    }
+    
+
+  clearInputs = () => {
+    this.setState({
+      email:'',
+      password:''
+    })
+    
+    
+  }
+
+   clearErrors =()=>{
+    this.setState({
+      EmailError:'',
+      PasswordError:''
+    })
+  }
+
+
+
+   handleLogin=()=>{
+    clearErrors();
+    firebase.auth().signInWithEmailAndPassword(email,password)
+    .catch(err => {
+      switch(err.code){
+        case "auth/invalid-email":
+        case "auth/user-disable" :
+          case "auth/user-not-found":
+            this.setState({ EmailError: err.message})
+            //setEmailError(err.message);
+            break;
+          case "auth/wrong-password":
+            //setPasswordError(err.message);
+            this.setState({ PasswordError: err.message})
+            break;
+      }
+    })
+  }
+
+   handleSignup = () =>{
+    clearErrors();
+    firebase.auth().createUserWithEmailAndPassword(email,password)
+    .catch(err => {
+      switch(err.code){
+        case "auth/email-already-in-use":
+        case "auth/invalid-email" :
+          this.setState({ EmailError: err.message})
+            //setEmailError(err.message);
+            break;
+          case "auth/weak-password":
+            this.setState({ PasswordError: err.message})
+            //setPasswordError(err.message);
+            break;
+      }
+    })
+  }
+
+   handleLogout = () =>{
+    firebase.auth().signOut().then(function() {
+      console.log('Signed Out');
+    }, function(error) {
+      console.error('Sign Out Error', error);
+    });
+  }
+
+   authListener = () =>{
+    firebase.auth().onAuthStateChanged(user => {
+      if(user){
+        clearInputs();
+        this.setState({
+          user:user
+        })
+      }
+      else{
+        this.setState({
+          user:''
+        })
+      }
+    })
+  }
   render(){
+
+  useEffect(()=>{
+    authListener();
+  },[])
+
+  const [user,setUser] = useState('')
+  const [email,setEmail] = useState('')
+  const [password,setPassword] = useState('')
+  const [emailError,setEmailError] = useState('')
+  const [passwordError,setPasswordError] = useState('')
+  const [hasAccount,setHasAccount] = useState(false)
+ 
     return(
       <div className="app-container">
-        <NotePage/>
+        <loginPage/>
       </div>
     )
-  }
+  }/*
+
 /*
   constructor() {
     super();
@@ -126,7 +338,7 @@ class App extends React.Component {
         }
       </div>
     );
-  }*/
+  }
 }
 
-export default App;
+export default App;*/

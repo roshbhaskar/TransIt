@@ -107,7 +107,8 @@ class NotePage extends React.Component {
           binNote={this.binNote}
           deleteNote={this.deleteNote}
           selectNote={this.selectNote}
-          newNote={this.newNote}></SidebarComponent>
+          newNote={this.newNote}
+          handleLogout={this.props.handleLogout}></SidebarComponent>
         {
           this.state.selectedNote ?
           <EditorComponent selectedNote={this.state.selectedNote}
