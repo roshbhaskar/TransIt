@@ -1,20 +1,12 @@
-import React,{useState,useEffect} from 'react';
-import NotePage from './home/NotePage';
-import SidebarComponent from './sidebar/sidebar';
-import EditorComponent from './editor/editor';
+import React from 'react';
+import SidebarComponent from '../sidebar/sidebar.js';
+import EditorComponent from '../editor/editor.js';
 
-import './App.css';
+
 const firebase = require('firebase');
 
-class App extends React.Component {
-  render(){
-    return(
-      <div className="app-container">
-        <NotePage/>
-      </div>
-    )
-  }
-/*
+class NotePage extends React.Component {
+
   constructor() {
     super();
     this.state = {
@@ -126,7 +118,7 @@ class App extends React.Component {
         }
       </div>
     );
-  }*/
+  }
 }
 
-export default App;
+export default NotePage;
