@@ -30,10 +30,12 @@ class SidebarComponent extends React.Component {
   binNote = (note) => this.props.binNote(note);
 
   render() {
-    const { notes, classes, selectedNoteIndex } = this.props;
+    const { notes, classes, selectedNoteIndex,user } = this.props;
     if(notes) {
-    const binednotes = notes.filter(_note => _note.bin == true);
-    const realnotes = notes.filter(_note => _note.bin == false);
+      const userID = notes.filter(_note=> _note.user==user.uid);
+    console.log('user is working',userID);
+    const binednotes = userID.filter(_note => _note.bin == true);
+    const realnotes = userID.filter(_note => _note.bin == false);
     
     
       return(

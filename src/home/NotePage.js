@@ -47,7 +47,8 @@ class NotePage extends React.Component {
     const note = {
       title: title,
       body: '',
-      bin:false
+      bin:false,
+      user:this.props.user.uid
     };
     const newFromDB = await firebase
       .firestore()
@@ -56,6 +57,7 @@ class NotePage extends React.Component {
         title: note.title,
         body: note.body,
         bin:false,
+        user:this.props.user.uid,
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
       });
     const newID = newFromDB.id;
@@ -108,7 +110,8 @@ class NotePage extends React.Component {
           deleteNote={this.deleteNote}
           selectNote={this.selectNote}
           newNote={this.newNote}
-          handleLogout={this.props.handleLogout}></SidebarComponent>
+          handleLogout={this.props.handleLogout}
+          user={this.props.user}></SidebarComponent>
         {
           this.state.selectedNote ?
           <EditorComponent selectedNote={this.state.selectedNote}
