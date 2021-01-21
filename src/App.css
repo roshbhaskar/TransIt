@@ -29,11 +29,14 @@ html, body {
   cursor: text;
 }
 .MuiListItem-root.Mui-selected {
-  background-color: #d4d8e8 !important;
+  background-color: #c3c7da !important;
 }
 .no-note-selected {
   font-size: 48px;
   position: absolute;
   top: 50px;
   left: calc(50% - 165px);
+}
+*{
+  font-family: cursive;
 }

@@ -131,7 +131,8 @@ class NotePage extends React.Component {
           noteUpdate={this.noteUpdate}
           handleLogout={this.props.handleLogout}
           ></EditorComponent> :
-          <div className="main-heading"> TransIt
+          <div className="main-heading">
+            <p style={{position:'absolute', left:'660px',marginTop:'18px',fontFamily:'cursive',color:'purple'}}><h1>TransIt</h1></p>
             <div >
             <Button onClick={this.props.handleLogout} className={classes.Signout} >Sign Out</Button></div></div>
           

@@ -9,13 +9,13 @@ const styles = theme => ({
   },
   titleInput: {
     
-    
+    color:'white',
     boxSizing: 'border-box',
     border: 'none',
     padding: '5px',
     fontSize: '24px',
     width: 'calc(100% - 300px)',
-    backgroundColor: '#29487d',
+    backgroundColor: '#603bbb',
     borderRadius:'5px',
     paddingLeft: '50px'
   },
@@ -39,13 +39,13 @@ const styles = theme => ({
   Signout:{
     position:'relative',
     padding:'17px',
-    width: '110px',
+    width: '120px',
     height: '5px',
-    
+    top:'20px',
     left: '1000px',
     borderBottom: '1px solid black',
     borderRadius: '6px',
-    backgroundColor: '#29487d',
+    backgroundColor: '#603bbb',
     color: 'white',
     '&:hover': {
       backgroundColor: '#88a2ce'

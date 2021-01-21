@@ -39,7 +39,7 @@ class EditorComponent extends React.Component {
     const { classes } = this.props;
 
     return(
-      <div className="main-heading"> TransIt
+      <div className="main-heading"> <p style={{position:'absolute', left:'660px',marginTop:'18px'}}><h1>TransIt</h1></p>
       <div >
       <Button onClick={this.props.handleLogout} className={classes.Signout} >Sign Out</Button></div>
         

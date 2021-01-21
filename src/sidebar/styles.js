@@ -22,7 +22,7 @@ const styles = theme => ({
    
     borderBottom: '1px solid black',
     borderRadius: '6px',
-    backgroundColor: '#29487d',
+    backgroundColor: '#603bbb',
     color: 'white',
     '&:hover': {
       backgroundColor: '#88a2ce'
@@ -54,7 +54,7 @@ const styles = theme => ({
     height: '35px',
     
     borderRadius: '6px',
-    backgroundColor: '#28787c',
+    backgroundColor: 'green',
     color: 'white'
   },
   Threebuttons:{
@@ -64,13 +64,13 @@ const styles = theme => ({
     margin:'20px',
     borderBottom: '1px solid black',
     borderRadius: '6px',
-    backgroundColor: '#29487d',
+    backgroundColor: '#603bbb',
     color: 'white',
     '&:hover': {
       backgroundColor: '#88a2ce'
     },
     '&:focus':{
-      backgroundColor : 'red'
+      backgroundColor : 'purple'
     }
   }
 });

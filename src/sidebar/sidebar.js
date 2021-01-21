@@ -62,7 +62,7 @@ class SidebarComponent extends React.Component {
         <div className={classes.sidebarContainer} >
           
           <div >
-          <Button onClick={this.Note} style={{padding:'15px'}} className={classes.Threebuttons} autoFocus >Notes</Button>
+          <Button onClick={this.Note} style={{padding:'15px'}} className={classes.Threebuttons} >Notes</Button>
             <Button onClick={this.Bin} style={{padding:'15px'}}className={classes.Threebuttons}>Bin</Button>
             </div>
           <Button
