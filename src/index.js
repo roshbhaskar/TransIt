@@ -8,13 +8,13 @@ const firebase = require('firebase');
 require('firebase/firestore');
 
 firebase.initializeApp({
-  apiKey: "AIzaSyAdgLuP1LnLZtkOX_Tloqklx49obAdhEb4",
-authDomain: "workspace-4b9b4.firebaseapp.com",
-projectId: "workspace-4b9b4",
-storageBucket: "workspace-4b9b4.appspot.com",
-messagingSenderId: "419331902685",
-appId: "1:419331902685:web:57d418ab2b350397efdf34",
-measurementId: "G-VZJC20SXYV"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_TO,
+appId:process.env.REACT_APP_FIREBASE_APP_ID,
+measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 });
 
 ReactDOM.render(<App />, document.getElementById('evernote-container'));
