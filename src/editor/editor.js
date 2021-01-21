@@ -4,6 +4,7 @@ import debounce from '../helpers';
 import BorderColorIcon from '@material-ui/icons/BorderColor';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
+import { Divider, Button } from '@material-ui/core';
 
 class EditorComponent extends React.Component {
   constructor() {
@@ -38,6 +39,10 @@ class EditorComponent extends React.Component {
     const { classes } = this.props;
 
     return(
+      <div className="main-heading"> TransIt
+      <div >
+      <Button onClick={this.props.handleLogout} className={classes.Signout} >Sign Out</Button></div>
+        
       <div className={classes.editorContainer}>
         <BorderColorIcon className={classes.editIcon}></BorderColorIcon>
         <input
@@ -50,7 +55,7 @@ class EditorComponent extends React.Component {
           value={this.state.text} 
           onChange={this.updateBody}>
         </ReactQuill>
-      </div>
+      </div></div>
     );
   }
   updateBody = async (val) => {

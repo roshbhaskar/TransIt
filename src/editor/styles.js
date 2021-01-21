@@ -8,27 +8,48 @@ const styles = theme => ({
     boxShadow: '0px 0px 2px black'
   },
   titleInput: {
-    height: '50px',
+    
+    
     boxSizing: 'border-box',
     border: 'none',
     padding: '5px',
     fontSize: '24px',
     width: 'calc(100% - 300px)',
     backgroundColor: '#29487d',
-    color: 'white',
+    borderRadius:'5px',
     paddingLeft: '50px'
   },
   editIcon: {
     position: 'absolute',
-    left: '310px',
-    top: '12px',
+    left: '10px',
+    top: '8px',
     color: 'white',
     width: '10',
     height: '10'
   },
   editorContainer: {
-    height: '100%',
+    position: 'absolute',
+    height: '80%',
+    width: '100%',
+    //padding: '10px',
+    top: '74px',
+    left: '300px',
     boxSizing: 'border-box'
+  },
+  Signout:{
+    position:'relative',
+    padding:'17px',
+    width: '110px',
+    height: '5px',
+    
+    left: '1000px',
+    borderBottom: '1px solid black',
+    borderRadius: '6px',
+    backgroundColor: '#29487d',
+    color: 'white',
+    '&:hover': {
+      backgroundColor: '#88a2ce'
+    }
   }
 });
 

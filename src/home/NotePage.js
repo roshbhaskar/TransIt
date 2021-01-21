@@ -1,7 +1,9 @@
 import React from 'react';
 import SidebarComponent from '../sidebar/sidebar.js';
 import EditorComponent from '../editor/editor.js';
-
+import { Divider, Button } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+import styles from './styles';
 
 const firebase = require('firebase');
 
@@ -100,7 +102,15 @@ class NotePage extends React.Component {
       .delete();
   }
 
+  deSelectAll =async ()=>{
+    this.setState({
+      selectedNote:null
+    })
+    console.log('deselected all')
+  }
+
   render() {
+    const { classes } = this.props;
     return(
       <div className="app-container">
         <SidebarComponent 
@@ -110,19 +120,25 @@ class NotePage extends React.Component {
           deleteNote={this.deleteNote}
           selectNote={this.selectNote}
           newNote={this.newNote}
-          handleLogout={this.props.handleLogout}
+          deSelectAll={this.deSelectAll}
+
           user={this.props.user}></SidebarComponent>
         {
           this.state.selectedNote ?
           <EditorComponent selectedNote={this.state.selectedNote}
           selectedNoteIndex={this.state.selectedNoteIndex}
           notes={this.state.notes}
-          noteUpdate={this.noteUpdate}></EditorComponent> :
-          null
+          noteUpdate={this.noteUpdate}
+          handleLogout={this.props.handleLogout}
+          ></EditorComponent> :
+          <div className="main-heading"> TransIt
+            <div >
+            <Button onClick={this.props.handleLogout} className={classes.Signout} >Sign Out</Button></div></div>
+          
         }
       </div>
     );
   }
 }
 
-export default NotePage;
+export default withStyles(styles)(NotePage);

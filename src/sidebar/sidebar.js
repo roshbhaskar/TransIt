@@ -22,15 +22,34 @@ class SidebarComponent extends React.Component {
     this.setState({ title: txt });
   }
   newNote = () => {
+    this.setState({
+      inbox:true
+    })
+    this.props.deSelectAll();
+
     this.props.newNote(this.state.title);
-    this.setState({ title: null, addingNote: false });
+    this.setState({ title: null, addingNote: false});
   }
   selectNote = (n, i) => this.props.selectNote(n, i);
   deleteNote = (note) => this.props.deleteNote(note);
   binNote = (note) => this.props.binNote(note);
 
+  Note=()=>{
+    this.setState({
+      inbox:true
+    })
+    this.props.deSelectAll();
+  }
+
+  Bin=()=>{
+    this.setState({
+      inbox:false
+    })
+    this.props.deSelectAll();
+  }
+
   render() {
-    const { notes, classes, selectedNoteIndex,user } = this.props;
+    const { notes, classes,user,selectedNoteIndex } = this.props;
     if(notes) {
       const userID = notes.filter(_note=> _note.user==user.uid);
     console.log('user is working',userID);
@@ -40,7 +59,12 @@ class SidebarComponent extends React.Component {
     
       return(
         
-        <div className={classes.sidebarContainer}>
+        <div className={classes.sidebarContainer} >
+          
+          <div >
+          <Button onClick={this.Note} style={{padding:'15px'}} className={classes.Threebuttons} autoFocus >Notes</Button>
+            <Button onClick={this.Bin} style={{padding:'15px'}}className={classes.Threebuttons}>Bin</Button>
+            </div>
           <Button
             onClick={this.newNoteBtnClick}
             className={classes.newNoteBtn}>{this.state.addingNote ? 'Cancel' : 'New Note'}</Button>
@@ -59,9 +83,7 @@ class SidebarComponent extends React.Component {
               </div> :
               null
             }
-            <Button onClick={()=> this.setState({inbox:true})}>All Notes</Button>
-            <Button onClick={()=> this.setState({inbox:false})}>Bin</Button>
-            <Button onClick={this.props.handleLogout}>Sign Out</Button>
+            
             
             <List>
               { this.state.inbox ?

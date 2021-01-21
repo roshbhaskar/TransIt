@@ -19,8 +19,9 @@ const styles = theme => ({
   newNoteBtn: {
     width: '100%',
     height: '35px',
+   
     borderBottom: '1px solid black',
-    borderRadius: '0px',
+    borderRadius: '6px',
     backgroundColor: '#29487d',
     color: 'white',
     '&:hover': {
@@ -28,13 +29,14 @@ const styles = theme => ({
     }
   },
   sidebarContainer: {
-    marginTop: '0px',
+    //marginTop: '10px',
     width: '300px',
     height: '100%',
     boxSizing: 'border-box',
     float: 'left',
     overflowY: 'scroll',
-    overflowX: 'hidden'
+    overflowX: 'hidden',
+    
   },
   newNoteInput: {
     width: '100%',
@@ -49,9 +51,27 @@ const styles = theme => ({
   },
   newNoteSubmitBtn: {
     width: '100%',
+    height: '35px',
+    
+    borderRadius: '6px',
     backgroundColor: '#28787c',
-    borderRadius: '0px',
     color: 'white'
+  },
+  Threebuttons:{
+    padding:'15px',
+    width: '100px',
+    height: '35px',
+    margin:'20px',
+    borderBottom: '1px solid black',
+    borderRadius: '6px',
+    backgroundColor: '#29487d',
+    color: 'white',
+    '&:hover': {
+      backgroundColor: '#88a2ce'
+    },
+    '&:focus':{
+      backgroundColor : 'red'
+    }
   }
 });
 
