@@ -1,5 +1,5 @@
 ## TransIt
-A web app that manages your notes.<br>
+A web app that manages your notes and saves it automatically.<br>
 It allows multiple users to create and access notes.<br>
 <br>
 Images and media however cannot be stored in these notes. (Working on that)
